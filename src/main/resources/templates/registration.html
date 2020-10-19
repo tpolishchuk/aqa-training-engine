@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head>
+        <title>Registration</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
+        <link rel="stylesheet" th:href="@{/css/not_authenticated.css}" href="../../css/not_authenticated.css"/>
+        <link rel="stylesheet" th:href="@{/css/forms.css}" href="../../css/forms.css"/>
+        <link rel="stylesheet" th:href="@{/css/alerts.css}" href="../../css/alerts.css"/>
+    </head>
+
+<body class="not_authenticated">
+
+<script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}" type="text/javascript"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+
+<div class="container col-lg-12 row">
+
+    <div class="col-lg-6 mt-5 mx-auto">
+        <div class="card card-signin-signup">
+            <div class="card-header text-uppercase">Welcome</div>
+            <div class="card-body">
+
+                <form id="form-login" class="form-signin-signup" th:action="@{/registration}" method="post"
+                      th:object="${user}">
+
+                    <fieldset>
+
+                        <p class="alert alert-danger form-alert" th:if="${!#strings.isEmpty(generalError)}"
+                           th:text="${generalError}">
+
+                        <div class="form-group">
+                            <input type="text" th:field="*{username}" class="form-control form-control-lg"
+                                   placeholder="Username"/>
+                            <p class="alert alert-danger form-alert" th:if="${#fields.hasErrors('username')}"
+                               th:errors="*{username}">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" th:field="*{email}" class="form-control form-control-lg"
+                                   placeholder="Email"/>
+                            <p class="alert alert-danger form-alert" th:if="${#fields.hasErrors('email')}"
+                               th:errors="*{email}">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" th:field="*{password}" class="form-control form-control-lg"
+                                   placeholder="Password"/>
+                            <p class="alert alert-danger form-alert" th:if="${#fields.hasErrors('password')}"
+                               th:errors="*{password}">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" th:field="*{passwordConfirm}" class="form-control form-control-lg"
+                                   placeholder="Confirm password"/>
+                            <p class="alert alert-danger form-alert" th:if="${#fields.hasErrors('passwordConfirm')}"
+                               th:errors="*{passwordConfirm}">
+                        </div>
+
+                        <input type="submit" id="submit-login-btn" value="Register"
+                               class="btn btn-primary btn-lg btn-block text-uppercase"/>
+                        <a href="/login" class="btn btn-light btn-sm btn-block active text-uppercase"
+                           role="button">Log in</a>
+
+                    </fieldset>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

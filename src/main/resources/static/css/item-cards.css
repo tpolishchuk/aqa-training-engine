@@ -1,0 +1,48 @@
+#tasks-scope-states .badge {
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+}
+
+.task-item-card {
+    width: 96%;
+    margin: 0.5rem;
+    border-radius: 10px;
+}
+
+.task-item-card .card-header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.task-item-card .card-title {
+    margin-top: 1rem;
+}
+
+.item-card .card-text {
+    display:inline-block;
+}
+
+.item-card .card-text span {
+    margin: 0px;
+    padding: 0px;
+    word-break: break-all;
+    white-space: normal;
+}
+
+.item-card .card-text span[id^="main"] {
+    display: inline;
+}
+
+.item-card .card-text span[id^="more"] {
+    display: none;
+}
+
+#tasks-scope-states {
+    margin: 1rem;
+}
+
+a.task-item:link, a.task-item:visited, a.task-item:active a.task-item:hover {
+    text-decoration: none;
+    color: #01446C;
+}
+

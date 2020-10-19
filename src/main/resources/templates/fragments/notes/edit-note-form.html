@@ -1,0 +1,53 @@
+<div th:fragment="edit-note-form"
+     id="edit-note-form-wrapper"
+     xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <form id="form-edit-note" class="form-edit-note simple-form-on-page"
+          th:action="@{/notes/edit}" method="post"
+          th:object="${note}">
+
+        <fieldset>
+
+            <p class="alert alert-danger form-alert" th:if="${!#strings.isEmpty(generalError)}"
+               th:text="${generalError}">
+
+                <div th:if="${lastFailedNoteErrors != null && lastFailedNoteErrors.hasErrors()}">
+                    <p class="alert alert-danger form-alert"
+                       th:each="err : ${lastFailedNoteErrors.getAllErrors()}"
+                       th:text="${err.getDefaultMessage()}"></p>
+                </div>
+
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="body-prepend">Body</span>
+                </div>
+                <textarea id="description-input" class="form-control"
+                          aria-describedby="body-prepend" placeholder="Body. 1-500 characters"
+                          th:field="*{body}"></textarea>
+            </div>
+
+            <input id="uuid-edited-note" type="hidden" th:field="*{uuid}" th:name="uuid" th:value="${note.uuid}"/>
+
+        </fieldset>
+
+    </form>
+
+    <form id="form-delete-note" method="post"
+          th:action="@{/notes/delete}">
+        <input id="uuid-deleted-note" type="hidden" th:name="note_uuid" th:value="${note.uuid}"/>
+    </form>
+
+    <div class="simple-form-buttons">
+        <a id="back-button" href="/notes" class="btn btn-lg btn-secondary">Back</a>
+
+        <button id="update-note-button" type="button" class="btn btn-lg btn-primary" onclick="document.forms['form-edit-note'].submit()">
+            Update note
+        </button>
+
+        <button id="delete-note-button" type="button" class="btn btn-lg btn-danger" onclick="document.forms['form-delete-note'].submit()">
+            Delete note
+        </button>
+    </div>
+
+</div>
+

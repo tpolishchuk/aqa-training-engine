@@ -1,0 +1,14 @@
+<div th:fragment="notes-scope"
+     id="notes-scope-row"
+     class="row mx-auto w-100"
+     xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <div class="row">
+        <div class="card-deck">
+            <div th:each="note : ${notesScope}">
+                <div th:replace="fragments/notes/note-item.html :: note-item"></div>
+            </div>
+        </div>
+    </div>
+
+</div>

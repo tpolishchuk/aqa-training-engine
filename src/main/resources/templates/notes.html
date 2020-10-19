@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Notes</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/authenticated.css}" href="../../css/authenticated.css"/>
+    <link rel="stylesheet" th:href="@{/css/common.css}" href="../../css/common.css"/>
+    <link rel="stylesheet" th:href="@{/css/sidebar.css}" href="../../css/sidebar.css"/>
+    <link rel="stylesheet" th:href="@{/css/forms.css}" href="../../css/forms.css"/>
+    <link rel="stylesheet" th:href="@{/css/item-cards.css}" href="../../css/item-cards.css"/>
+    <link rel="stylesheet" th:href="@{/css/buttons.css}" href="../../css/buttons.css"/>
+    <link rel="stylesheet" th:href="@{/css/alerts.css}" href="../../css/alerts.css"/>
+</head>
+
+<body class="home" th:attr="onload=${reopenAddNoteModal != null && reopenAddNoteModal} ?
+                'reopenModal(\'#add-note-modal\')' : null">
+
+<script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}" type="text/javascript"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/reopen-modal.js}" type="text/javascript"></script>
+<script th:src="@{/js/expand-collapse-long-text.js}" type="text/javascript"></script>
+
+<div class="container-fluid">
+    <div id="wrapper" class="row">
+
+        <div id="home-navbar-wrapper" class="col-3" th:insert="fragments/sidebar.html :: sidebar"></div>
+
+        <div id="home-content-wrapper" class="col-9">
+            <div id="notes-buttons-and-filters" class="row">
+                <div id="notes-buttons" class="col-4">
+                    <button type="button"
+                            class="btn btn-lg btn bg-thunderstorm-sky white-text font-weight-bold add-item"
+                            data-toggle="modal"
+                            data-target="#add-note-modal">
+                        <div th:replace="fragments/icons.html :: plus-circle-fill"></div>
+                        Add note
+                    </button>
+                    <div id="modal-wrapper" th:insert="fragments/notes/add-note-modal.html :: add-note-modal"></div>
+                </div>
+            </div>
+            <div id="notes-filtered-content" class="mx-auto w-100">
+                <div id="notes-scope-wrapper" class="mx-auto w-100"
+                     th:insert="fragments/notes/notes-scope.html :: notes-scope"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

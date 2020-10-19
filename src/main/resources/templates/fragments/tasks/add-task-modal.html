@@ -1,0 +1,57 @@
+<div th:fragment="add-task-modal"
+     class="modal fade"
+     id="add-task-modal"
+     tabindex="-1"
+     aria-labelledby="add-task-modal-label"
+     aria-hidden="true"
+     xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="add-task-modal-label">Add task</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="form-add-task" class="form-add-task" th:action="@{/tasks/add}" method="post"
+                      th:object="${task}">
+
+                    <fieldset>
+
+                        <div th:if="${lastFailedTaskErrors != null && lastFailedTaskErrors.hasErrors()}">
+                            <p class="alert alert-danger form-alert"
+                               th:each="err : ${lastFailedTaskErrors.getAllErrors()}"
+                               th:text="${err.getDefaultMessage()}"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" th:field="*{title}" class="form-control form-control-lg"
+                                   placeholder="Title. 1-200 characters"/>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" th:field="*{description}" class="form-control form-control-lg"
+                                   placeholder="Description. 0-200 characters"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deadline">Deadline (<b>dd-MM-yyyy HH:mm</b>):</label>
+                            <input id="deadline" type="text" th:field="*{deadline}" class="form-control form-control-lg"
+                                   placeholder="31-12-2999 23:59"/>
+                        </div>
+
+                    </fieldset>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        onclick="document.forms['form-add-task'].submit()">Add task
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

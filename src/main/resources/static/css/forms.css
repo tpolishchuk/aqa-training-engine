@@ -1,0 +1,22 @@
+.form-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form-group input, .form-group select {
+    height: 3rem;
+    border-radius: 2rem;
+}
+
+.card-text-after-br {
+    margin-top: 1rem;
+}
+
+.input-group {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.simple-form-on-page {
+    margin: 2rem;
+}

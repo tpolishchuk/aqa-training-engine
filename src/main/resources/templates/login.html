@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/not_authenticated.css}" href="../../css/not_authenticated.css"/>
+    <link rel="stylesheet" th:href="@{/css/forms.css}" href="../../css/forms.css"/>
+    <link rel="stylesheet" th:href="@{/css/alerts.css}" href="../../css/alerts.css"/>
+</head>
+
+<body class="not_authenticated">
+
+<script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}" type="text/javascript"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+
+<div class="container col-lg-12 row">
+
+    <div class="col-lg-6 mt-5 mx-auto">
+        <div class="card card-signin-signup">
+            <div class="card-header text-uppercase">Welcome back</div>
+            <div class="card-body">
+                <form id="form-login" class="form-signin-signup" method="post" th:action="@{/login}">
+
+                    <fieldset>
+
+                        <p class="alert alert-success form-alert" th:if="${!#strings.isEmpty(successfulLogoutMsg)}"
+                           th:text="${successfulLogoutMsg}">
+
+                        <p class="alert alert-danger form-alert" th:if="${!#strings.isEmpty(authError)}"
+                           th:text="${authError}">
+
+                        <div class="form-group">
+                            <input type="text" id="username" class="form-control form-control-lg" th:name="username"
+                                   placeholder="Username"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="password" class="form-control form-control-lg"
+                                   th:name="password" placeholder="Password"/>
+                        </div>
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+                        <input type="submit" id="submit-login-btn" value="Log in"
+                               class="btn btn-primary btn-lg btn-block text-uppercase"/>
+                        <a href="/registration" class="btn btn-light btn-sm btn-block active text-uppercase"
+                           role="button">Register</a>
+
+                    </fieldset>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

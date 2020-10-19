@@ -1,0 +1,36 @@
+<div th:fragment="sidebar"
+     xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+    <ul class="navbar-nav bg-gradient-primary sidebar" id="sidebar-left">
+        <div class="sidebar-brand-text mx-3 sidebar-menu" id="sidebar-greeting" sec:authorize="isAuthenticated()">
+            <div th:replace="fragments/icons.html :: person-circle"></div>
+            <a href="/home" th:text="${#authentication.name}"></a>
+        </div>
+
+        <hr class="sidebar-divider">
+
+        <div class="sidebar-brand-text mx-3 sidebar-menu" id="sidebar-tasks-menu">
+            <div th:replace="fragments/icons.html :: ui-checks-grid"></div>
+            <a href="/tasks">Tasks</a>
+        </div>
+
+        <hr class="sidebar-divider">
+
+        <div class="sidebar-brand-text mx-3 sidebar-menu" id="sidebar-notes-menu">
+            <div th:replace="fragments/icons.html :: stickies-fill"></div>
+            <a href="/notes">Notes</a>
+        </div>
+
+        <hr class="sidebar-divider">
+
+        <div class="sidebar-brand-text mx-3 sidebar-menu" id="sidebar-logout">
+            <div th:replace="fragments/icons.html :: door-open-fill"></div>
+            <form id="form-logout" method="post" action="/logout">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            </form>
+            <a id="sidebar-logout-button" onclick="document.forms['form-logout'].submit()">Logout</a>
+        </div>
+
+    </ul>
+</div>

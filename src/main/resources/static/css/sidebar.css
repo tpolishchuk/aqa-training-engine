@@ -1,0 +1,47 @@
+#home-navbar-wrapper {
+    background: rgb(0,65,106);
+    background: linear-gradient(90deg, rgba(0,65,106,1) 0%, rgba(228,229,230,1) 100%);
+    font-weight: bold;
+    min-height: 100vh;
+}
+
+#sidebar-left svg {
+    margin-right: 10px;
+}
+
+.sidebar-menu {
+    color: white;
+    margin: 10px;
+}
+
+.sidebar-divider {
+    border: 1px solid white;
+    margin: 10px;
+}
+
+.sidebar-menu a:link, .sidebar-menu a:visited, .sidebar-menu a:visited:active {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+    transition: 0.5s;
+    font-size: 1.2em;
+}
+
+.sidebar-menu a:hover {
+    color: white;
+    text-shadow: 0 0 3px #ccf2ff;
+    text-decoration: none;
+}
+
+#form-logout {
+    display: inline;
+    margin: 0px;
+}
+
+#sidebar-logout-button {
+    margin-left: 10px;
+}
+
+#sidebar-greeting {
+    margin-top: 3rem;
+}

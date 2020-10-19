@@ -1,0 +1,31 @@
+svg.icon-in-button {
+    margin-right: 5px;
+}
+
+.simple-form-buttons {
+    margin-left: 2rem;
+}
+
+.simple-form-buttons .btn{
+    border-radius: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.form-bulk-entities-processing .btn {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.add-item {
+    margin-top: 1rem;
+}
+
+.add-item:hover {
+    color: white;
+    text-shadow: 0 0 2px #ccf2ff;
+}
+
+#tasks-buttons {
+    margin-top: 1rem;
+}

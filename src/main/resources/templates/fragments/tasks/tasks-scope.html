@@ -1,0 +1,27 @@
+<div th:fragment="tasks-scope"
+     id="tasks-scope-row"
+     class="row mx-auto w-100"
+     xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <div id="new-tasks" class="w-100 col-4 d-flex flex-column">
+        <span th:if="${newTasksScope.empty}">No new tasks available</span>
+        <div th:each="task : ${newTasksScope}">
+            <div class="task-item-wrapper" th:insert="fragments/tasks/task-item.html :: task-item"></div>
+        </div>
+    </div>
+
+    <div id="in-progress-tasks" class="w-100 col-4 d-flex flex-column">
+        <span th:if="${inProgressTasksScope.empty}">No tasks in progress available</span>
+        <div th:each="task : ${inProgressTasksScope}">
+            <div class="task-item-wrapper" th:insert="fragments/tasks/task-item.html :: task-item"></div>
+        </div>
+    </div>
+
+    <div id="done-tasks" class="w-100 col-4 d-flex flex-column">
+        <span th:if="${doneTasksScope.empty}">No completed tasks available</span>
+        <div th:each="task : ${doneTasksScope}">
+            <div class="task-item-wrapper" th:insert="fragments/tasks/task-item.html :: task-item"></div>
+        </div>
+    </div>
+
+</div>

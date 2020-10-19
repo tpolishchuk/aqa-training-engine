@@ -1,0 +1,69 @@
+<div th:fragment="tasks-generator"
+     class="card border-light"
+     xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <div class="card-header bg-winter-sky border-light font-weight-bold white-text">
+        <h3>Tasks</h3>
+    </div>
+
+    <div class="card-body">
+
+        <ul class="list-group list-group-flush">
+
+            <li class="list-group-item">
+
+                <p class="card-text">Generate random tasks for the current user</p>
+
+                <form id="form-generate-random-tasks" class="form-bulk-entities-processing"
+                      th:action="@{/api/tasks/generate-random-entries}" th:method="POST">
+
+                    <fieldset>
+
+                        <div class="input-group input-group-lg state-select-div">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="state-select">State</label>
+                            </div>
+                            <select class="custom-select" id="state-select" name="state">
+                                <option value="new" selected>New</option>
+                                <option value="in_progress">In progress</option>
+                                <option value="done">Done</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="amount-prepend">Amount</span>
+                            </div>
+                            <input id="amount-input" type="text" class="form-control" name="amount" value="1"
+                                   placeholder="1" aria-describedby="amount-prepend"/>
+                        </div>
+
+                        <input type="submit" id="submit-generate-random-tasks-btn" value="Generate"
+                               class="btn btn-primary btn-lg btn-block text-uppercase"/>
+
+                    </fieldset>
+
+                </form>
+
+                <div id="generate-random-tasks-result-message"></div>
+
+            </li>
+
+            <li class="list-group-item">
+
+                <p class="card-text card-text-after-br">Delete all tasks assigned to the current user</p>
+
+                <form id="form-delete-all-user-tasks" class="form-bulk-entities-processing"
+                      th:action="@{/api/tasks/delete-all-user-tasks}" th:method="DELETE">
+                    <input type="submit" id="submit-delete-all-user-tasks" value="Delete all user tasks"
+                           class="btn btn-danger btn-lg btn-block text-uppercase"/>
+                </form>
+
+                <div id="delete-all-user-tasks-result-message"></div>
+
+            </li>
+
+        </ul>
+    </div>
+
+</div>

@@ -1,0 +1,82 @@
+<div th:fragment="edit-task-form"
+     id="edit-task-form-wrapper"
+     xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <form id="form-edit-task" class="form-edit-task simple-form-on-page"
+          th:action="@{/tasks/edit}" method="post"
+          th:object="${task}">
+
+        <fieldset>
+
+            <p class="alert alert-danger form-alert" th:if="${!#strings.isEmpty(generalError)}"
+               th:text="${generalError}">
+
+                <div th:if="${lastFailedTaskErrors != null && lastFailedTaskErrors.hasErrors()}">
+                    <p class="alert alert-danger form-alert"
+                       th:each="err : ${lastFailedTaskErrors.getAllErrors()}"
+                       th:text="${err.getDefaultMessage()}"></p>
+                </div>
+
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="title-prepend">Title</span>
+                </div>
+                <input id="title-input" type="text" class="form-control"
+                       placeholder="Title. 1-200 characters" aria-describedby="title-prepend" th:field="*{title}"/>
+            </div>
+
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="description-prepend">Description</span>
+                </div>
+                <textarea id="description-input" class="form-control"
+                       aria-describedby="description-prepend" placeholder="Description. 0-200 characters"
+                          th:field="*{description}"></textarea>
+            </div>
+
+            <div class="input-group input-group-lg state-select-div">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="state-select">State</label>
+                </div>
+                <select class="custom-select" id="state-select" th:field="*{state}">
+                    <option th:value="new" th:text="New"
+                            th:selected="${#strings.equals(task.state, 'new')}"></option>
+                    <option th:value="in_progress" th:text="'In progress'"
+                            th:selected="${#strings.equals(task.state, 'in_progress')}"></option>
+                    <option th:value="done" th:text="Done"
+                            th:selected="${#strings.equals(task.state, 'done')}"></option>
+                </select>
+            </div>
+
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="deadline-prepend">Deadline (<b>dd-MM-yyyy HH:mm</b>)</span>
+                </div>
+                <input id="deadline-input" type="text" aria-describedby="deadline-prepend"
+                       class="form-control form-control-lg" placeholder="31-12-2999 23:59" th:field="*{deadline}"/>
+            </div>
+
+            <input id="uuid-edited-task" type="hidden" th:field="*{uuid}" th:name="uuid" th:value="${task.uuid}"/>
+
+        </fieldset>
+
+    </form>
+
+    <form id="form-delete-task" method="post" th:action="@{/tasks/delete}">
+        <input id="uuid-deleted-task" type="hidden" th:name="task_uuid" th:value="${task.uuid}"/>
+    </form>
+
+    <div class="simple-form-buttons">
+        <a id="back-button" href="/tasks" class="btn btn-lg btn-secondary">Back</a>
+
+        <button id="update-task-button" type="button" class="btn btn-lg btn-primary" onclick="document.forms['form-edit-task'].submit()">
+            Update task
+        </button>
+
+        <button id="delete-task-button" type="button" class="btn btn-lg btn-danger" onclick="document.forms['form-delete-task'].submit()">
+            Delete task
+        </button>
+    </div>
+
+</div>
+
