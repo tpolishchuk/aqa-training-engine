@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  mysql-db:
+    container_name: mysql-db
+    image: mysql/mysql-server:5.7
+    ports:
+      - ${MYSQL_PORT}:3306
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ALLOW_EMPTY_PASSWORD: ${MYSQL_ALLOW_EMPTY_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - ./src/main/resources/tmp:/var/lib/mysql57:rw
+      - ./src/main/resources/sql:/docker-entrypoint-initdb.d
+
+  aqa-training-engine-app:
+    container_name: aqa-training-engine-app
+    image: tpolishchuk/aqa-training-engine:latest
+    volumes:
+      - .:/app
+      - ~/.m2:/root/.m2
+    restart: on-failure
+    working_dir: /app
+    environment:
+      APP_PORT: ${APP_PORT}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    expose:
+      - ${APP_PORT}
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    command: mvn clean spring-boot:run
+    depends_on:
+      - mysql-db
