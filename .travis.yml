@@ -12,6 +12,9 @@ cache:
   directories:
     - "$HOME/.m2"
 
+before_install:
+  - sudo service mysql stop
+
 script:
   - docker login --username ${DOCKER_LOGIN} --password ${DOCKER_PASSWORD}
   - mvn clean package
