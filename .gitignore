@@ -1,0 +1,8 @@
+.idea
+*.iws
+*.iml
+*.ipr
+
+target/
+
+./src/main/resources/tmp
