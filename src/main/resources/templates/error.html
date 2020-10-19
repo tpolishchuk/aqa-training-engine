@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+
+        <title>Oh no!</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    </head>
+
+    <body>
+
+        <script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}" type="text/javascript"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+
+        <div class="container col-lg-12 row">
+            <div class="col-lg-6 mx-auto">
+
+                <div class="card bg-danger text-white mt-5">
+                    <img class="card-img-top"
+                         th:src="@{/img/hide-the-pain-harold.jpg}">
+                    <div class="card-body">
+                        <h3 class="card-title">Oh no!</h3>
+                        <p class="card-text">It seems that something went wrong. Please, send your report to <a href="https://github.com/tpolishchuk/aqa-training-engine/issues">issues</a></p>
+                        <a href="/home" class="btn btn-info btn-lg btn-block active mt-1"
+                           role="button" aria-pressed="true">Go Home</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>
