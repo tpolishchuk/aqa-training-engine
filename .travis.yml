@@ -23,4 +23,5 @@ script:
 
 after_success:
   - docker tag tpolishchuk/aqa-training-engine:latest tpolishchuk/aqa-training-engine:${TRAVIS_BUILD_NUMBER}
-  - docker push tpolishchuk/aqa-training-engine:${TRAVIS_BUILD_NUMBER}
+  - docker tag tpolishchuk/aqa-training-engine:latest tpolishchuk/aqa-training-engine:latest
+  - docker push tpolishchuk/aqa-training-engine
