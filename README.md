@@ -4,11 +4,11 @@
 
 AQA Test Engine is a simple application, that may help people to practice their UI test automation skills. If you want to try any new approach or a testing tool, but do not want to deal with complicated systems, just install an AQA TE locally and play with it as with any other web application.
 
-### Requirements
+## Requirements
 
 The latest version of Docker platform
 
-### Installation
+## Installation
 
 - Clone the repository
 - Navigate into the project root folder
@@ -24,7 +24,7 @@ docker-compose up
 Started Application in X.XXX seconds
 ```
 
-### Test entities
+## Test entities
 
 **User**
 
@@ -60,7 +60,7 @@ Notes actions support basic validation, so you can practice unhappy path scenari
 
 You can find more details in the [project Wiki](https://github.com/tpolishchuk/aqa-training-engine/wiki).
 
-### Additional functionality
+## Additional functionality
 
 **Random entries generation**
 
@@ -70,7 +70,7 @@ If you need bulk creation of random tasks or notes, just generate them via home 
 
 User tasks or notes can be easily deleted from by a single click on the form button in a corresponding form.
 
-### Technologies used in the project
+## Technologies used in the project
 
 - Spring Boot
 - Spring Security
